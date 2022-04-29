@@ -39,14 +39,36 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         SpeedControl();
 
-        if (grounded)
+        //    if (grounded)
+        //    {
+        //        if (isMoving())
+        //        {
+        //            Debug.Log("Moving");
+        //            rb.drag = groundDrag;
+        //        }
+        //        else
+        //        {
+        //            Debug.Log("Not moving");
+        //            rb.drag = 100;
+        //        }
+
+        //    } else
+        //    {
+        //        Debug.Log("Not grounded");
+        //        rb.drag = 0;
+        //    }
+        //}
+        if (isMoving())
         {
+            Debug.Log("Moving");
             rb.drag = groundDrag;
-        } else
-        {
-            Debug.Log("Not grounded");
-            rb.drag = 0;
         }
+        else
+        {
+            Debug.Log("Not moving");
+            rb.drag = 20;
+        }
+
     }
 
     public void FixedUpdate()
@@ -75,5 +97,14 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+    }
+
+    private bool isMoving()
+    {
+        if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
+        {
+            return true;
+        }
+        return false;
     }
 }
