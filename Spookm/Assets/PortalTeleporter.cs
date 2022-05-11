@@ -19,6 +19,7 @@ public class PortalTeleporter : MonoBehaviour
 
             if(dotProduct < 0f) // Player passed through the portal
             {
+                Debug.Log("SSSSSS");
                 float rotationDiff = -Quaternion.Angle(transform.rotation,reciever.rotation);
                 rotationDiff += 180;
                 player.Rotate(Vector3.up,rotationDiff);
@@ -33,6 +34,8 @@ public class PortalTeleporter : MonoBehaviour
 
     void onTriggerEnter(Collider other)
     {
+
+        Debug.Log(other.tag);
         if (other.tag == "Player")
         {
             playerIsOverlapping = true;
