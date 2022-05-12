@@ -12,19 +12,17 @@ public class PortalTeleporter : MonoBehaviour
 
     void Update()
     {
-        if (playerIsOverlapping)
+        if (playerIsOverlapping == true)
         {
             Vector3 portalToPlayer = player.position - transform.position;
-            float dotProduct = Vector3.Dot(transform.up,portalToPlayer);
-
-            if(dotProduct < 0f) // Player passed through the portal
+            float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
+           
+            if (dotProduct < 0f)
             {
-                Debug.Log("SSSSSS");
-                float rotationDiff = -Quaternion.Angle(transform.rotation,reciever.rotation);
-                rotationDiff += 180;
-                player.Rotate(Vector3.up,rotationDiff);
+                float rotationDiff = Quaternion.Angle(player.rotation, reciever.rotation) + 180;
+                player.Rotate(0f, rotationDiff, 0f);
 
-                Vector3 positionOffset = Quaternion.Euler(0f,rotationDiff,0f) * portalToPlayer;
+                Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
                 player.position = reciever.position + positionOffset;
 
                 playerIsOverlapping = false;
@@ -32,23 +30,19 @@ public class PortalTeleporter : MonoBehaviour
         }
     }
 
-    void onTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-
-        Debug.Log(other.tag);
         if (other.tag == "Player")
         {
             playerIsOverlapping = true;
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAA");
         }
     }
 
-    void onTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
             playerIsOverlapping = false;
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAA");
         }
     }
 }

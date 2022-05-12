@@ -63,12 +63,10 @@ public class PlayerMovement : MonoBehaviour
         //}
         if (isMoving())
         {
-            Debug.Log("Moving");
             rb.drag = groundDrag;
         }
         else
         {
-            Debug.Log("Not moving");
             rb.drag = 20;
         }
 
