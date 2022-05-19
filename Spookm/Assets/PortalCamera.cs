@@ -11,14 +11,16 @@ public class PortalCamera : MonoBehaviour
     public Transform portal;
     public Transform otherPortal;
 
-    public Transform orientation;
-
-
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(playerCamera.position);
+        Debug.Log(otherPortal.position);
         Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
-        transform.position = portal.position - playerOffsetFromPortal;
+        Vector3 correction = new Vector3(-10f, -2f, 1f);
+        Vector3 cameraPosition = portal.position - playerOffsetFromPortal;
+
+        transform.position = cameraPosition;
 
         float angularDifferenceBetweenPortalRotations = Quaternion.Angle(portal.rotation, otherPortal.rotation);
 
@@ -26,8 +28,5 @@ public class PortalCamera : MonoBehaviour
         Vector3 newForward = new Vector3(playerCamera.forward.x * -1.0f,playerCamera.forward.y,playerCamera.forward.z * -1.0f)  ;
         Vector3 newCameraDirection = portalRotationalDifference * newForward;
         transform.rotation = Quaternion.LookRotation(newCameraDirection,Vector3.up);
-        
-
-
     }
 }

@@ -7,8 +7,10 @@ public class PortalTeleporter : MonoBehaviour
 
     public Transform player;
     public Transform reciever;
+    public Camera m_MainCamera;
 
     private bool playerIsOverlapping = false;
+
 
     void Update()
     {
@@ -16,11 +18,13 @@ public class PortalTeleporter : MonoBehaviour
         {
             Vector3 portalToPlayer = player.position - transform.position;
             float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
-           
+
+            CameraMovement cm = m_MainCamera.GetComponent<CameraMovement>();
+
             if (dotProduct < 0f)
             {
                 float rotationDiff = Quaternion.Angle(player.rotation, reciever.rotation) + 180;
-                player.Rotate(0f, rotationDiff, 0f);
+                cm.Flip();
 
                 Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
                 player.position = reciever.position + positionOffset;

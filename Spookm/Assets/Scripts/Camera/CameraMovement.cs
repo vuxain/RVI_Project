@@ -12,6 +12,7 @@ public class CameraMovement : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    private float rotationConst;
     private Camera cam;
 
     void Start()
@@ -19,6 +20,7 @@ public class CameraMovement : MonoBehaviour
         cam = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        rotationConst = 1f;
     }
 
     void Update()
@@ -29,10 +31,15 @@ public class CameraMovement : MonoBehaviour
         yRotation += mouseX;
         xRotation -= mouseY;
 
-
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    public void Flip()
+    {
+        yRotation += 180f * rotationConst;
+        rotationConst *= -1f;
     }
 }

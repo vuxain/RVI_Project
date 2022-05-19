@@ -69,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 20;
         }
-
     }
 
     public void FixedUpdate()

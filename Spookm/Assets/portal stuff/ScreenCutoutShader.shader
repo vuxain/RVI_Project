@@ -5,6 +5,7 @@ Shader "Unlit/ScreenCutoutShader"
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_Brightness ("Brightness", Float) = 1
 	}
 	SubShader
 	{
@@ -46,12 +47,16 @@ Shader "Unlit/ScreenCutoutShader"
 			}
 			
 			sampler2D _MainTex;
+			float _Brightness;
 
 			fixed4 frag (v2f i) : SV_Target
 			{
 				i.screenPos /= i.screenPos.w;
 				fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
-				
+				col.r = col.r * _Brightness;
+				col.g = col.g * _Brightness;
+				col.b = col.b * _Brightness;
+
 				return col;
 			}
 			ENDCG
