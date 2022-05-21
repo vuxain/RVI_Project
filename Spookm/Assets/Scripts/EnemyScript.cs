@@ -23,7 +23,7 @@ public class EnemyScript : MonoBehaviour
         Vector3 dirToPlayer = transform.position - Player.transform.position;
         Vector3 newPos = transform.position - dirToPlayer;
 
-        Enemy.SetDestination(newPos);
+        Enemy.SetDestination( Player.transform.position);
         
     }
 }
