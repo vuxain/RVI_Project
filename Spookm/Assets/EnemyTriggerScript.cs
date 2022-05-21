@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyTriggerScript : MonoBehaviour
 {
@@ -11,17 +12,27 @@ public class EnemyTriggerScript : MonoBehaviour
     private bool verticalMovement = false;
     private bool horizontalMovement = false;
 
+
     void Update()
     {
-        if (enemy.position.z > 40.0f)
+        if (enemy.position.z > 18.0f)
         {
             verticalMovement = true;
             horizontalMovement = false;
         }
 
-        if (enemy.position.y < 11.2f)
+        if (enemy.position.y < 4.83)
         {
             verticalMovement = false;
+
+            enemy.GetComponent<NavMeshAgent>().enabled = true;
+            enemy.GetComponent<Rigidbody>().isKinematic = true;
+
+            enemy.GetComponent<EnemyScript>().enabled = true;            
+            enemy.GetComponent<EnemyTriggerScript>().enabled = false;
+
+
+
         }
 
         if (verticalMovement == true)
@@ -31,7 +42,7 @@ public class EnemyTriggerScript : MonoBehaviour
 
         if (horizontalMovement == true)
         {
-            enemy.position = enemy.position + new Vector3(0, 0, 0.3f);
+            enemy.position = enemy.position + new Vector3(0, 0, 0.7f);
         } 
     }
 

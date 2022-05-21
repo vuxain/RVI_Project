@@ -14,8 +14,7 @@ public class PortalCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerCamera.position);
-        Debug.Log(otherPortal.position);
+    
         Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
         Vector3 correction = new Vector3(-10f, -2f, 1f);
         Vector3 cameraPosition = portal.position - playerOffsetFromPortal;
