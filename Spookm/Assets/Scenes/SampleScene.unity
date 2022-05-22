@@ -18874,7 +18874,6 @@ GameObject:
   - component: {fileID: 1562088345}
   - component: {fileID: 1562088344}
   - component: {fileID: 1562088343}
-  - component: {fileID: 1562088342}
   - component: {fileID: 1562088341}
   m_Layer: 0
   m_Name: EnemyTrigger
@@ -18897,22 +18896,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1217991482}
   enemy: {fileID: 670978339}
---- !u!114 &1562088342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562088340}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ec6b283ee89f24e85743bfa3ddaddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1217991482}
-  reciever: {fileID: 755056090}
-  portal: {fileID: 0}
-  m_MainCamera: {fileID: 0}
 --- !u!65 &1562088343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18942,7 +18925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562088340}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -276.6065, y: 10.6599, z: 41.1661}
+  m_LocalPosition: {x: -273.8, y: 10.6599, z: 41.1661}
   m_LocalScale: {x: 10.769777, y: 1, z: 3.1695077}
   m_ConstrainProportionsScale: 0
   m_Children: []
