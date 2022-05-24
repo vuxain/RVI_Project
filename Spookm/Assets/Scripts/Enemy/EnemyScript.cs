@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour
 {
     private NavMeshAgent Enemy;
     public GameObject Player;
 
-    private bool message = false;
+    //private bool message = false;
 
     //public float EnemyDistanceRun = 4.0f;
 
@@ -29,18 +30,20 @@ public class EnemyScript : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log(col.tag);
-
-         if(col.tag == "Player")
-            message = true;
-    }
-
-    void OnGUI () {
-        if (message) {
-            Time.timeScale = 0.0f; 
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 200f, 200f), "Loš kraj žurke");
+        if (col.tag == "Player")
+        {
+            SceneManager.LoadScene("DeathMenuScene");
+            Cursor.lockState = CursorLockMode.None;
+            
         }
     }
+
+    // void OnGUI () {
+    //     if (message) {
+    //         Time.timeScale = 0.0f; 
+    //         GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 200f, 200f), "Loš kraj žurke");
+    //     }
+    // }
 }
 
 
