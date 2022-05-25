@@ -34,6 +34,7 @@ public class EnemyScript : MonoBehaviour
         {
             SceneManager.LoadScene("DeathMenuScene");
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             
         }
     }
