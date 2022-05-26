@@ -13,10 +13,12 @@ public class EnemyTriggerScript : MonoBehaviour
     private bool horizontalMovement = false;
 
     private GameObject portalB;
+    private Transform recieverPlane;
 
     void Start()
     {
         portalB = GameObject.Find("PortalB");
+        recieverPlane = portalB.transform.Find("RenderPlaneB");
     }
 
     void Update()
@@ -36,18 +38,20 @@ public class EnemyTriggerScript : MonoBehaviour
 
             enemy.GetComponent<EnemyScript>().enabled = true;            
             enemy.GetComponent<EnemyTriggerScript>().enabled = false;
+            recieverPlane.GetComponent<MeshCollider>().enabled = false;
+            GameObject.Find("PortalA").transform.Find("RenderPlaneACol").GetComponent<PortalTeleporter>().disableCurtain();
             portalB.SetActive(false);
         }
 
         if (verticalMovement == true)
         {
-            enemy.position = enemy.position + new Vector3(0, -0.4f, 0);
+            enemy.position = enemy.position + new Vector3(0, -30f, 0) * Time.deltaTime;
         }
 
         if (horizontalMovement == true)
         {
-            enemy.position = enemy.position + new Vector3(0, 0, 0.7f);
-        } 
+            enemy.position = enemy.position + new Vector3(0, 0, 30f) * Time.deltaTime;
+        }
     }
 
      void OnTriggerEnter(Collider other)
