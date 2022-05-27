@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ControlsScene.unity
     guid: 039c25da549627f4db23bd76d32de0f8
+  - enabled: 1
+    path: Assets/Scenes/EscapeMenuScene.unity
+    guid: 7fda14dbb08848f49a2d7ec90f4726a8
   m_configObjects: {}
