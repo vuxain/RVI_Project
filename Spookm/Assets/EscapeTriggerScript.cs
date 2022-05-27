@@ -14,7 +14,7 @@ public class EscapeTriggerScript : MonoBehaviour
         //Debug.Log(enemy.GetComponent<EnemyScript>().enabled);
         if (col.tag == "Player" && enemy.GetComponent<EnemyScript>().enabled == true)
         {
-            SceneManager.LoadScene("MainMenuScene");
+            SceneManager.LoadScene("EscapeMenuScene");
             Cursor.lockState = CursorLockMode.None;
             
         }
