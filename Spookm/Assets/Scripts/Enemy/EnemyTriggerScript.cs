@@ -45,12 +45,12 @@ public class EnemyTriggerScript : MonoBehaviour
 
         if (verticalMovement == true)
         {
-            enemy.position = enemy.position + new Vector3(0, -30f, 0) * Time.deltaTime;
+            enemy.position = enemy.position + new Vector3(0, -40f, 0) * Time.deltaTime;
         }
 
         if (horizontalMovement == true)
         {
-            enemy.position = enemy.position + new Vector3(0, 0, 30f) * Time.deltaTime;
+            enemy.position = enemy.position + new Vector3(0, 0, 40f) * Time.deltaTime;
         }
     }
 
